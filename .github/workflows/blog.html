@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogu i Luleve - Azalea Flowershop</title>
+    <link rel="icon" href="LOGO AZALEA PNG -01.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Additional styles for blog page */
+        .blog-header {
+            background: linear-gradient(rgba(44, 85, 48, 0.9), rgba(44, 85, 48, 0.7)), 
+                        url('blog-header.jpg') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            margin-bottom: 60px;
+        }
+        
+        .blog-header h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .blog-header p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .blog-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .blog-filter-btn {
+            padding: 10px 25px;
+            background: transparent;
+            border: 2px solid var(--medium-green);
+            color: var(--medium-green);
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .blog-filter-btn.active,
+        .blog-filter-btn:hover {
+            background: var(--medium-green);
+            color: white;
+        }
+        
+        .blog-page-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .blog-page-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .blog-page-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .blog-page-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .blog-page-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .blog-page-card:hover .blog-page-image img {
+            transform: scale(1.05);
+        }
+        
+        .blog-page-content {
+            padding: 25px;
+        }
+        
+        .blog-page-category {
+            display: inline-block;
+            background: var(--soft-green);
+            color: var(--medium-green);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        
+        .blog-page-title {
+            font-size: 22px;
+            color: var(--dark-green);
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        
+        .blog-page-excerpt {
+            color: var(--text-medium);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .blog-page-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            padding-top: 15px;
+            border-top: 1px solid var(--beige);
+        }
+        
+        .blog-pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 50px 0;
+        }
+        
+        .page-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border: 2px solid var(--beige);
+            color: var(--text-dark);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .page-btn.active,
+        .page-btn:hover {
+            background: var(--medium-green);
+            color: white;
+            border-color: var(--medium-green);
+        }
+        
+        .page-btn.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        @media (max-width: 768px) {
+            .blog-header {
+                padding: 80px 20px;
+            }
+            
+            .blog-header h1 {
+                font-size: 36px;
+            }
+            
+            .blog-page-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Same Header as Homepage -->
+    <header class="static-header">
+        <div class="header-container">
+            <a href="index.html" class="logo-link">
+                <div class="logo-container">
+                    <img src="LOGO AZALEA PNG -01.png" alt="Azalea Flowershop Logo" class="logo-image">
+                    <div class="logo-text-container">
+                        <h1 class="logo-text">Azalea Flowershop</h1>
+                        <p class="logo-subtitle">Pejë, Kosovë</p>
+                    </div>
+                </div>
+            </a>
+
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+
+            <nav class="static-nav" id="staticNav">
+                <div class="nav-wrapper">
+                    <ul class="static-nav-list">
+                        <li><a href="index.html#home" class="static-nav-link">Kryefaqja</a></li>
+                        <li><a href="blog.html" class="static-nav-link active">Blogu</a></li>
+                        <li><a href="index.html#gallery" class="static-nav-link">Galeria</a></li>
+                        <li><a href="index.html#community" class="static-nav-link">Komuniteti</a></li>
+                        <li><a href="index.html#about" class="static-nav-link">Rreth nesh</a></li>
+                        <li><a href="index.html#contact" class="static-nav-link">Kontakti</a></li>
+                    </ul>
+
+                    <div class="static-nav-right">
+                        <div class="social-icons">
+                            <a href="https://instagram.com/lulishtja.azalea" target="_blank" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://facebook.com/lulishtja.azalea" target="_blank" aria-label="Facebook">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                        </div>
+                        <div class="language-switcher">
+                            <button class="lang-toggle" id="langToggle">
+                                <span class="lang-code active" data-lang="sq">AL</span>
+                                <span class="lang-separator">|</span>
+                                <span class="lang-code" data-lang="en">EN</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="nav-overlay" id="navOverlay"></div>
+    <div class="header-spacer"></div>
+
+    <!-- Blog Header -->
+    <div class="blog-header">
+        <div class="container">
+            <h1>Blogu i Luleve</h1>
+            <p>Eksploroni botën e luleve me këshilla praktike, ide kreative dhe frymëzim të pafund</p>
+        </div>
+    </div>
+
+    <!-- Blog Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Blog Filters -->
+            <div class="blog-filters">
+                <button class="blog-filter-btn active" data-filter="all">Të gjitha</button>
+                <button class="blog-filter-btn" data-filter="care">Kujdesi i Luleve</button>
+                <button class="blog-filter-btn" data-filter="decoration">Dekorim Shtëpie</button>
+                <button class="blog-filter-btn" data-filter="meaning">Kuptimi i Luleve</button>
+                <button class="blog-filter-btn" data-filter="gifting">Dhuratat & Rastet</button>
+            </div>
+
+            <!-- Blog Grid -->
+            <div class="blog-page-grid">
+                <!-- Article 1 -->
+                <article class="blog-page-card" data-category="care" id="article1">
+                    <div class="blog-page-image">
+                        <img src="blog1.jpg" alt="10 Gabimet më të zakonshme në kujdesin e luleve">
+                    </div>
+                    <div class="blog-page-content">
+                        <span class="blog-page-category">Kujdesi i Luleve</span>
+                        <h2 class="blog-page-title">10 Gabimet më të zakonshme në kujdesin e luleve të brendshme</h2>
+                        <p class="blog-page-excerpt">Shmangini këto gabime të zakonshme për të mbajtur lule tuaja të shëndetshme dhe të lumtura. Mësoni si të ujësoni siç duhet, të siguroni dritën e duhur dhe të shmangni sëmundjet.</p>
+                        <div class="blog-page-meta">
+                            <span><i class="far fa-calendar"></i> 15 Maj 2024</span>
+                            <span><i class="far fa-clock"></i> 5 min lexim</span>
+                        </div>
+                        <a href="#article1" class="btn btn-primary">Lexo artikullin</a>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="blog-page-card" data-category="decoration" id="article2">
+                    <div class="blog-page-image">
+                        <img src="blog2.jpg" alt="Dekorim shtëpie me lule">
+                    </div>
+                    <div class="blog-page-content">
+                        <span class="blog-page-category">Dekorim Shtëpie</span>
+                        <h2 class="blog-page-title">Si të përdorni lule për të transformuar hapësirat tuaja të brendshme</h2>
+                        <p class="blog-page-excerpt">Zbuloni se si lule të thjeshta mund të ndryshojnë plotësisht atmosferën e shtëpisë tuaj. Këshilla praktike për zgjedhjen e vazove, kombinimin e ngjyrave dhe vendosjen strategjike.</p>
+                        <div class="blog-page-meta">
+                            <span><i class="far fa-calendar"></i> 10 Prill 2024</span>
+                            <span><i class="far fa-clock"></i> 7 min lexim</span>
+                        </div>
+                        <a href="#article2" class="btn btn-primary">Lexo artikullin</a>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="blog-page-card" data-category="meaning" id="article3">
+                    <div class="blog-page-image">
+                        <img src="blog3.jpg" alt="Kuptimi i luleve">
+                    </div>
+                    <div class="blog-page-content">
+                        <span class="blog-page-category">Kuptimi i Luleve</span>
+                        <h2 class="blog-page-title">Gjuha e luleve: Çfarë nënkuptojnë vërtet lule të ndryshme?</h2>
+                        <p class="blog-page-excerpt">Nga trëndafilat deri te lulëkuqet, zbuloni kuptimin e vërtetë pas luleve të preferuara. Një udhëzues i plotë për të zgjedhur lulja e duhur për çdo rast.</p>
+                        <div class="blog-page-meta">
+                            <span><i class="far fa-calendar"></i> 22 Mars 2024</span>
+                            <span><i class="far fa-clock"></i> 8 min lexim</span>
+                        </div>
+                        <a href="#article3" class="btn btn-primary">Lexo artikullin</a>
+                    </div>
+                </article>
+
+                <!-- Add more articles as needed -->
+            </div>
+
+            <!-- Pagination -->
+            <div class="blog-pagination">
+                <button class="page-btn disabled"><i class="fas fa-chevron-left"></i></button>
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Same Footer as Homepage -->
+    <footer class="main-footer">
+        <!-- Copy footer from index.html -->
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Blog filtering functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.blog-filter-btn');
+            const blogCards = document.querySelectorAll('.blog-page-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Filter blog cards
+                    blogCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 10);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+            
+            // Copy hamburger and language functionality from main script
+            // Or include the same script.js file
+        });
+    </script>
+    <script src="lule-hamburger-line.js"></script>
+        <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-logo">Azalea Flowershop</h3>
+                    <p class="footer-tagline" data-key="footer_tagline">Sjellim bukurinë e natyrës në shtëpitë e Pejës që nga viti 2019.</p>
+                    <div class="footer-social">
+                        <a href="https://instagram.com/lulishtja.azalea" target="_blank" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://facebook.com/lulishtja.azalea" target="_blank" aria-label="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-key="footer_links_title">Lidhje të shpejta</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home" data-key="nav_home">Kryefaqja</a></li>
+                        <li><a href="#about" data-key="nav_about">Rreth nesh</a></li>
+                        <li><a href="#flower-care" data-key="nav_care">Kujdesi i luleve</a></li>
+                        <li><a href="#blog" data-key="nav_blog">Blogu</a></li>
+                        <li><a href="#gallery" data-key="nav_gallery">Galeria</a></li>
+                        <li><a href="#community" data-key="nav_community">Komuniteti</a></li>
+                        <li><a href="#contact" data-key="nav_contact">Kontakti</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-key="footer_contact_title">Kontakti</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i> Pejë, Kosovë</li>
+                        <li><i class="fas fa-phone"></i> <a href="tel:+38344123456">+383 49 760 577</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:lulishtja.azalea@gmail.com">lulishtja.azalea@gmail.com</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-key="footer_newsletter_title">Newsletter</h4>
+                    <p data-key="footer_newsletter_desc">Abonohuni për të marrë këshilla mujore për kujdesin e luleve.</p>
+                    <form id="footerNewsletterForm" class="footer-newsletter">
+                        <input type="email" placeholder="Email juaj" required data-key="newsletter_placeholder">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; <span id="currentYear">2024</span> Azalea Flowershop. <span data-key="footer_rights">Të gjitha të drejtat e rezervuara.</span></p>
+                </div>
+                <div class="footer-credits">
+                    <p data-key="footer_created">Krijuar nga </p>
+                    <a href="https://instagram.com/amarsaliaga" target="_blank">amarsaliaga</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
