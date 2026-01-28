@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azalea Flowershop - Pejë, Kosovë</title>
+    
+    <!-- Favicon (logo në tab të browser-it) -->
+    <link rel="icon" href="LOGO AZALEA PNG -01.png" type="image/png">
+    <!-- Për të parë në telefon -->
+    <link rel="apple-touch-icon" href="LOGO AZALEA PNG -01.png">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <!-- Header statik që nuk lëviz -->
+<header class="static-header">
+    <div class="header-container">
+        <!-- Logo në të majtë -->
+        <a href="#home" class="logo-link">
+            <div class="logo-container">
+                <img src="LOGO AZALEA PNG -01.png" alt="Azalea Flowershop Logo" class="logo-image">
+                <div class="logo-text-container">
+                    <h1 class="logo-text">Azalea Flowershop</h1>
+                    <p class="logo-subtitle">Pejë, Kosovë</p>
+                </div>
+            </div>
+        </a>
+
+        <!-- Hamburger për mobile -->
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+
+        <!-- Navigation statik -->
+        <nav class="static-nav" id="staticNav">
+            <div class="nav-wrapper">
+                <!-- Lista e link-eve -->
+                <ul class="static-nav-list">
+                    <li>
+                        <a href="#home" class="static-nav-link active" data-key="nav_home">
+                            Kryefaqja
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#blog" class="static-nav-link" data-key="nav_blog">
+                            Blogu
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#gallery" class="static-nav-link" data-key="nav_gallery">
+                            Galeria
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#community" class="static-nav-link" data-key="nav_community">
+                            Komuniteti
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#about" class="static-nav-link" data-key="nav_about">
+                            Rreth nesh
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#contact" class="static-nav-link" data-key="nav_contact">
+                            Kontakti
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Social icons dhe language switcher -->
+                <div class="static-nav-right">
+                    <div class="social-icons">
+                        <a href="https://instagram.com/lulishtja.azalea" target="_blank" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://facebook.com/lulishtja.azalea" target="_blank" aria-label="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+                    <div class="language-switcher">
+                        <button class="lang-toggle" id="langToggle">
+                            <span class="lang-code active" data-lang="sq">AL</span>
+                            <span class="lang-separator">|</span>
+                            <span class="lang-code" data-lang="en">EN</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<!-- Overlay për mobile -->
+<div class="nav-overlay" id="navOverlay"></div>
+
+<!-- Hapësirë për të mos mbuluar përmbajtjen -->
+    <main class="main-content">
+        <section id="home" class="hero-section">
+    <!-- Responsive Background Images -->
+    <picture style="display: none;">
+        <source media="(max-width: 768px)" srcset="foto_homepage_website-mobile.jpg">
+        <source media="(min-resolution: 2dppx)" srcset="foto_homepage_website@2x.jpg">
+        <img src="foto_homepage_website.jpg" alt="Azalea Flowershop hero background" id="heroImageSrc">
+    </picture>
+    
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h2 class="hero-title" data-key="hero_title">Lule të bukura për çdo moment të veçantë</h2>
+        <p class="hero-subtitle" data-key="hero_subtitle">Për 6 vjet kemi sjellë ngjyra dhe lumturi në shtëpitë e Pejës. Çdo buqetë është krijuar me dashuri dhe kujdes të veçantë.</p>
+        <div class="hero-buttons">
+            <a href="https://instagram.com/lulishtja.azalea" target="_blank" class="btn btn-primary" data-key="hero_btn_instagram">
+                <i class="fab fa-instagram"></i> Na ndiqni në Instagram
+            </a>
+            <a href="#contact" class="btn btn-secondary" data-key="hero_btn_contact">Na kontaktoni</a>
+        </div>
+    </div>
+    <div class="hero-scroll">
+        <span class="scroll-text" data-key="hero_scroll">Vazhdoni më poshtë për të mësuar më shumë</span>
+        <i class="fas fa-chevron-down"></i>
+    </div>
+</section>
+<!-- Blog Section - Homepage -->
+<section id="blog" class="blog-home-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Blogu ynë i Luleve</h2>
+            <div class="section-divider"></div>
+            <p class="section-subtitle">Këshilla, ide dhe frymëzim për dashamirët e luleve</p>
+        </div>
+
+        <div class="blog-home-grid">
+            <!-- Blog Post 1 -->
+            <div class="blog-home-card">
+                <div class="blog-home-image">
+                    <img src="blog1.jpg" alt="10 Gabimet më të zakonshme në kujdesin e luleve" class="blog-real-image">
+                    <div class="blog-category">Kujdesi i Luleve</div>
+                </div>
+                <div class="blog-home-content">
+                    <h3 class="blog-home-title">10 Gabimet më të zakonshme në kujdesin e luleve të brendshme</h3>
+                    <p class="blog-home-excerpt">Shmangini këto gabime të zakonshme për të mbajtur lule tuaja të shëndetshme dhe të lumtura...</p>
+                    <div class="blog-home-meta">
+                        <span class="blog-date"><i class="far fa-calendar"></i> 15 Maj 2024</span>
+                        <span class="blog-read-time"><i class="far fa-clock"></i> 5 min lexim</span>
+                    </div>
+                    <a href="blog.html#article1" class="btn btn-primary btn-read-more">
+                        <i class="fas fa-book-open"></i> Mëso më shumë
+                    </a>
+                </div>
+            </div>
+
+            <!-- Blog Post 2 -->
+            <div class="blog-home-card">
+                <div class="blog-home-image">
+                    <img src="blog2.jpg" alt="Si të përdorni lule për dekorim shtëpie" class="blog-real-image">
+                    <div class="blog-category">Dekorim Shtëpie</div>
+                </div>
+                <div class="blog-home-content">
+                    <h3 class="blog-home-title">Si të përdorni lule për të transformuar hapësirat tuaja të brendshme</h3>
+                    <p class="blog-home-excerpt">Zbuloni se si lule të thjeshta mund të ndryshojnë plotësisht atmosferën e shtëpisë tuaj...</p>
+                    <div class="blog-home-meta">
+                        <span class="blog-date"><i class="far fa-calendar"></i> 10 Prill 2024</span>
+                        <span class="blog-read-time"><i class="far fa-clock"></i> 7 min lexim</span>
+                    </div>
+                    <a href="blog.html#article2" class="btn btn-primary btn-read-more">
+                        <i class="fas fa-book-open"></i> Mëso më shumë
+                    </a>
+                </div>
+            </div>
+
+            <!-- Blog Post 3 -->
+            <div class="blog-home-card">
+                <div class="blog-home-image">
+                    <img src="blog3.jpg" alt="Gjuha e luleve dhe kuptimi i tyre" class="blog-real-image">
+                    <div class="blog-category">Kuptimi i Luleve</div>
+                </div>
+                <div class="blog-home-content">
+                    <h3 class="blog-home-title">Gjuha e luleve: Çfarë nënkuptojnë vërtet lule të ndryshme?</h3>
+                    <p class="blog-home-excerpt">Nga trëndafilat deri te lulëkuqet, zbuloni kuptimin e vërtetë pas luleve të preferuara...</p>
+                    <div class="blog-home-meta">
+                        <span class="blog-date"><i class="far fa-calendar"></i> 22 Mars 2024</span>
+                        <span class="blog-read-time"><i class="far fa-clock"></i> 8 min lexim</span>
+                    </div>
+                    <a href="blog.html#article3" class="btn btn-primary btn-read-more">
+                        <i class="fas fa-book-open"></i> Mëso më shumë
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="blog-home-view-all">
+            <a href="blog.html" class="btn btn-secondary btn-view-all">
+                <i class="fas fa-newspaper"></i> Shiko të gjitha bloget
+            </a>
+        </div>
+    </div>
+</section>
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" data-key="about_title">Historia jonë</h2>
+                    <div class="section-divider"></div>
+                    <p class="section-subtitle" data-key="about_subtitle">Një dashuri për lule që filloi në Pejë</p>
+                </div>
+                
+                <div class="about-content">
+                    <div class="about-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-seedling"></i>
+                            <span data-key="about_image">Imazhi i dyqanit tonë</span>
+                        </div>
+                    </div>
+                    <div class="about-text">
+                        <div class="about-story">
+                            <h3 data-key="about_story_title">Filimi i ëndrrave tona</h3>
+                            <p data-key="about_story_p1">Azalea Flowershop u hap në vitin 2019 me një vizion të thjeshtë: të sjellim bukurinë e luleve të gjalla në çdo shtëpi dhe zyrë në Pejë. Filluam si një dyqan i vogël me vetëm dy punonjës, por me kalimin e kohës, dashuria jonë për lule na ka udhëhequr në rritje dhe zhvillim.</p>
+                            <p data-key="about_story_p2">Sot jemi një ekip prej 8 personash të pasionuar, të cilët çdo ditë krijojnë buqeta unike për klientët tanë. Ne besojmë se lulja e duhur mund të transformojë çdo moment të zakonshëm në një të veçantë.</p>
+                        </div>
+                        
+                        <div class="about-values">
+                            <div class="value-card">
+                                <div class="value-icon">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <h4 data-key="value1_title">Pasion i vërtetë</h4>
+                                <p data-key="value1_desc">Çdo lule është përzgjedhur me kujdes dhe rregulluar me dashuri.</p>
+                            </div>
+                            <div class="value-card">
+                                <div class="value-icon">
+                                    <i class="fas fa-hands-helping"></i>
+                                </div>
+                                <h4 data-key="value2_title">Kujdes për klientin</h4>
+                                <p data-key="value2_desc">Ne dëgjojmë nevojat tuaja dhe krijojmë buqeta të personalizuara.</p>
+                            </div>
+                            <div class="value-card">
+                                <div class="value-icon">
+                                    <i class="fas fa-leaf"></i>
+                                </div>
+                                <h4 data-key="value3_title">Freskia e garantuar</h4>
+                                <p data-key="value3_desc">Lule tona vijnë nga furnitorët më të mirë dhe ruhen në kushte optimale.</p>
+                            </div>
+                            <div class="value-card">
+                                <div class="value-icon">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <h4 data-key="value4_title">Qasje e lehtë në lokale</h4>
+                                <p data-key="value4_desc">Jemi krenar që jemi pjesë e komunitetit të Pejës për një dekadë.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="flower-care" class="care-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" data-key="care_title">Kujdesi i Luleve të Brendshme</h2>
+                    <div class="section-divider"></div>
+                    <p class="section-subtitle" data-key="care_subtitle">Udhëzues i plotë për të mbajtur lule të shëndetshme në shtëpi</p>
+                </div>
+                
+              
+                <div class="blog-categories">
+                    <button class="blog-category-btn active" data-category="all" data-key="blog_category_all">Të gjitha</button>
+                    <button class="blog-category-btn" data-category="care" data-key="blog_category_care">Kujdesi i Luleve</button>
+                    <button class="blog-category-btn" data-category="decoration" data-key="blog_category_decoration">Dekorim Shtëpie</button>
+                    <button class="blog-category-btn" data-category="meaning" data-key="blog_category_meaning">Kuptimi i Luleve</button>
+                    <button class="blog-category-btn" data-category="gifting" data-key="blog_category_gifting">Dhuratat & Rastet</button>
+                </div>
+                
+                <div class="blog-grid">
+                    <div class="blog-card" data-category="care">
+                        <div class="blog-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-leaf"></i>
+                                <span data-key="blog_image1">Kujdesi i luleve të brendshme</span>
+                            </div>
+                        </div>
+                        <div class="blog-content">
+                            <h3 class="blog-title" data-key="blog_title1">10 Gabimet më të zakonshme në kujdesin e luleve të brendshme</h3>
+                            <p class="blog-excerpt" data-key="blog_excerpt1">Shmangni këto gabime të zakonshme për të mbajtur lule tuaja të shëndetshme dhe të lumtura...</p>
+                            <button class="blog-read-btn" data-article="1" data-key="blog_read">Lexo më shumë</button>
+                        </div>
+                    </div>
+                    
+                    <div class="blog-card" data-category="decoration">
+                        <div class="blog-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-home"></i>
+                                <span data-key="blog_image2">Dekorim shtëpie me lule</span>
+                            </div>
+                        </div>
+                        <div class="blog-content">
+                            <h3 class="blog-title" data-key="blog_title2">Si të përdorni lule për të transformuar hapësirat tuaja të brendshme</h3>
+                            <p class="blog-excerpt" data-key="blog_excerpt2">Zbuloni se si lule të thjeshta mund të ndryshojnë plotësisht atmosferën e shtëpisë tuaj...</p>
+                            <button class="blog-read-btn" data-article="2" data-key="blog_read">Lexo më shumë</button>
+                        </div>
+                    </div>
+                    
+                    <div class="blog-card" data-category="meaning">
+                        <div class="blog-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-heart"></i>
+                                <span data-key="blog_image3">Kuptimi i luleve</span>
+                            </div>
+                        </div>
+                        <div class="blog-content">
+                            <h3 class="blog-title" data-key="blog_title3">Gjuha e luleve: Çfarë nënkuptojnë vërtet lule të ndryshme?</h3>
+                            <p class="blog-excerpt" data-key="blog_excerpt3">Nga trëndafilat deri te lulëkuqet, zbuloni kuptimin e vërtetë pas luleve të preferuara...</p>
+                            <button class="blog-read-btn" data-article="3" data-key="blog_read">Lexo më shumë</button>
+                        </div>
+                    </div>
+                    
+                    <div class="blog-card" data-category="gifting">
+                        <div class="blog-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-gift"></i>
+                                <span data-key="blog_image4">Dhuratat me lule</span>
+                            </div>
+                        </div>
+                        <div class="blog-content">
+                            <h3 class="blog-title" data-key="blog_title4">Udhëzuesi përfundimtar për zgjedhjen e luleve të duhura për çdo rast</h3>
+                            <p class="blog-excerpt" data-key="blog_excerpt4">Nuk jeni të sigurt se cilat lule të zgjidhni për një rast specifik? Ky udhëzues do t'ju ndihmojë...</p>
+                            <button class="blog-read-btn" data-article="4" data-key="blog_read">Lexo më shumë</button>
+                        </div>
+                    </div>
+                    
+                    <div class="blog-card" data-category="care">
+                        <div class="blog-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-seedling"></i>
+                                <span data-key="blog_image5">Riprodhimi i bimëve</span>
+                            </div>
+                        </div>
+                        <div class="blog-content">
+                            <h3 class="blog-title" data-key="blog_title5">Si të riprodhoni bimët e brendshme: Një udhëzues hap pas hapi</h3>
+                            <p class="blog-excerpt" data-key="blog_excerpt5">Mësoni teknikat më të thjeshta për të riprodhuar bimët tuaja të preferuara dhe për të rritur koleksionin tuaj...</p>
+                            <button class="blog-read-btn" data-article="5" data-key="blog_read">Lexo më shumë</button>
+                        </div>
+                    </div>
+                    
+                    <div class="blog-card" data-category="decoration">
+                        <div class="blog-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-palette"></i>
+                                <span data-key="blog_image6">Ngjyrat në dekorim</span>
+                            </div>
+                        </div>
+                        <div class="blog-content">
+                            <h3 class="blog-title" data-key="blog_title6">Përzierja e ngjyrave: Si të krijoni buqeta të harmonishme për shtëpinë tuaj</h3>
+                            <p class="blog-excerpt" data-key="blog_excerpt6">Zbuloni se si të kombinoni ngjyrat e luleve për të krijuar buqeta që plotësojnë dekorin tuaj të brendshëm...</p>
+                            <button class="blog-read-btn" data-article="6" data-key="blog_read">Lexo më shumë</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="blog-load-more">
+                    <button class="btn btn-secondary" id="loadMoreBlogs" data-key="blog_load_more">Shfaq më shumë artikuj</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="gallery-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" data-key="gallery_title">Galeria jonë</h2>
+                    <div class="section-divider"></div>
+                    <p class="section-subtitle" data-key="gallery_subtitle">40+ krijime unike me lule nga dyqani ynë në Pejë</p>
+                </div>
+                
+                <div class="gallery-filters">
+                    <button class="gallery-filter active" data-filter="all" data-key="gallery_filter_all">Të gjitha</button>
+                    <button class="gallery-filter" data-filter="bouquets" data-key="gallery_filter_bouquets">Buqeta</button>
+                    <button class="gallery-filter" data-filter="arrangements" data-key="gallery_filter_arrangements">Aranzhime</button>
+                    <button class="gallery-filter" data-filter="indoor" data-key="gallery_filter_indoor">Bimë të brendshme</button>
+                    <button class="gallery-filter" data-filter="special" data-key="gallery_filter_special">Raste të veçanta</button>
+                </div>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-category="bouquets">
+                        <div class="gallery-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-spa"></i>
+                                <span data-key="gallery_image1">Buqetë me trëndafila të kuq</span>
+                            </div>
+                        </div>
+                        <div class="gallery-content">
+                            <h3 class="gallery-item-title" data-key="gallery_title1">Bukuria klasike</h3>
+                            <p class="gallery-item-desc" data-key="gallery_desc1">Një buqetë elegante me trëndafila të kuq të kombinuar me barishte të bardhë dhe gjethe të gjelbër.</p>
+                            <a href="https://instagram.com/lulishtja.azalea" target="_blank" class="btn btn-instagram" data-key="gallery_order">
+                                <i class="fab fa-instagram"></i> Porosisni nëpërmjet Instagram
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="arrangements">
+                        <div class="gallery-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-leaf"></i>
+                                <span data-key="gallery_image2">Aranzhim për shtëpi</span>
+                            </div>
+                        </div>
+                        <div class="gallery-content">
+                            <h3 class="gallery-item-title" data-key="gallery_title2">Oaza e brendshme</h3>
+                            <p class="gallery-item-desc" data-key="gallery_desc2">Një aranzhim i bukur me bimë të brendshme të përzgjedhura për të sjellë natyrën në shtëpinë tuaj.</p>
+                            <a href="https://instagram.com/lulishtja.azalea" target="_blank" class="btn btn-instagram" data-key="gallery_order">
+                                <i class="fab fa-instagram"></i> Porosisni nëpërmjet Instagram
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="special">
+                        <div class="gallery-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-birthday-cake"></i>
+                                <span data-key="gallery_image3">Aranzhim për ditëlindje</span>
+                            </div>
+                        </div>
+                        <div class="gallery-content">
+                            <h3 class="gallery-item-title" data-key="gallery_title3">Festë me lule</h3>
+                            <p class="gallery-item-desc" data-key="gallery_desc3">Një buqetë e gëzuar dhe e ndritshme për të festuar ditëlindjen e dikujt të veçantë.</p>
+                            <a href="https://instagram.com/lulishtja.azalea" target="_blank" class="btn btn-instagram" data-key="gallery_order">
+                                <i class="fab fa-instagram"></i> Porosisni nëpërmjet Instagram
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="bouquets">
+                        <div class="gallery-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-female"></i>
+                                <span data-key="gallery_image4">Buqetë për nënë</span>
+                            </div>
+                        </div>
+                        <div class="gallery-content">
+                            <h3 class="gallery-item-title" data-key="gallery_title4">Dashuria për nënën</h3>
+                            <p class="gallery-item-desc" data-key="gallery_desc4">Një buqetë e butë dhe elegante me lule rozë dhe të bardha, krijuar posaçërisht për nënën tuaj.</p>
+                            <a href="https://instagram.com/lulishtja.azalea" target="_blank" class="btn btn-instagram" data-key="gallery_order">
+                                <i class="fab fa-instagram"></i> Porosisni nëpërmjet Instagram
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="indoor">
+                        <div class="gallery-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-tree"></i>
+                                <span data-key="gallery_image5">Monstera Deliciosa</span>
+                            </div>
+                        </div>
+                        <div class="gallery-content">
+                            <h3 class="gallery-item-title" data-key="gallery_title5">Monstera e shëndetshme</h3>
+                            <p class="gallery-item-desc" data-key="gallery_desc5">Një Monstera Deliciosa e bukur dhe e shëndetshme, e përshtatshme për çdo shtëpi moderne.</p>
+                            <a href="https://instagram.com/lulishtja.azalea" target="_blank" class="btn btn-instagram" data-key="gallery_order">
+                                <i class="fab fa-instagram"></i> Porosisni nëpërmjet Instagram
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="arrangements">
+                        <div class="gallery-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-glass-cheers"></i>
+                                <span data-key="gallery_image6">Aranzhim për dasmë</span>
+                            </div>
+                        </div>
+                        <div class="gallery-content">
+                            <h3 class="gallery-item-title" data-key="gallery_title6">Romanca e bardhë</h3>
+                            <p class="gallery-item-desc" data-key="gallery_desc6">Një aranzhim dasme elegant me trëndafila të bardhë, orkide dhe lule të tjera të bardha.</p>
+                            <a href="https://instagram.com/lulishtja.azalea" target="_blank" class="btn btn-instagram" data-key="gallery_order">
+                                <i class="fab fa-instagram"></i> Porosisni nëpërmjet Instagram
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="special">
+                        <div class="gallery-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span data-key="gallery_image7">Buqetë për diplomim</span>
+                            </div>
+                        </div>
+                        <div class="gallery-content">
+                            <h3 class="gallery-item-title" data-key="gallery_title7">Suksesi i lulëzuar</h3>
+                            <p class="gallery-item-desc" data-key="gallery_desc7">Një buqetë e ndritshme dhe e gëzuar për të festuar arritjet akademike.</p>
+                            <a href="https://instagram.com/lulishtja.azalea" target="_blank" class="btn btn-instagram" data-key="gallery_order">
+                                <i class="fab fa-instagram"></i> Porosisni nëpërmjet Instagram
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="indoor">
+                        <div class="gallery-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-feather-alt"></i>
+                                <span data-key="gallery_image8">Fiddle Leaf Fig</span>
+                            </div>
+                        </div>
+                        <div class="gallery-content">
+                            <h3 class="gallery-item-title" data-key="gallery_title8">Fiddle Leaf Fig e madhërishme</h3>
+                            <p class="gallery-item-desc" data-key="gallery_desc8">Një Fiddle Leaf Fig e shëndetshme me gjethe të mëdha, të bukura në formë violine.</p>
+                            <a href="https://instagram.com/lulishtja.azalea" target="_blank" class="btn btn-instagram" data-key="gallery_order">
+                                <i class="fab fa-instagram"></i> Porosisni nëpërmjet Instagram
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="bouquets">
+                        <div class="gallery-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-sun"></i>
+                                <span data-key="gallery_image9">Buqetë verore</span>
+                            </div>
+                        </div>
+                        <div class="gallery-content">
+                            <h3 class="gallery-item-title" data-key="gallery_title9">Drita e verës</h3>
+                            <p class="gallery-item-desc" data-key="gallery_desc9">Një buqetë e ndritshme verore me lule të verdha, portokalli dhe të kuqe që sjellin diell në çdo dhomë.</p>
+                            <a href="https://instagram.com/lulishtja.azalea" target="_blank" class="btn btn-instagram" data-key="gallery_order">
+                                <i class="fab fa-instagram"></i> Porosisni nëpërmjet Instagram
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="arrangements">
+                        <div class="gallery-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-briefcase"></i>
+                                <span data-key="gallery_image10">Aranzhim për zyrë</span>
+                            </div>
+                        </div>
+                        <div class="gallery-content">
+                            <h3 class="gallery-item-title" data-key="gallery_title10">Frymëzimi në punë</h3>
+                            <p class="gallery-item-desc" data-key="gallery_desc10">Një aranzhim modern dhe profesional për të sjellë një prekje natyrore në hapësirat tuaja të punës.</p>
+                            <a href="https://instagram.com/lulishtja.azalea" target="_blank" class="btn btn-instagram" data-key="gallery_order">
+                                <i class="fab fa-instagram"></i> Porosisni nëpërmjet Instagram
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="indoor">
+                        <div class="gallery-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-cactus"></i>
+                                <span data-key="gallery_image11">Koleksion sukulentesh</span>
+                            </div>
+                        </div>
+                        <div class="gallery-content">
+                            <h3 class="gallery-item-title" data-key="gallery_title11">Oaza e sukulentëve</h3>
+                            <p class="gallery-item-desc" data-key="gallery_desc11">Një koleksion i bukur sukulentesh në një enë moderne, të përshtatshme për fillestarët.</p>
+                            <a href="https://instagram.com/lulishtja.azalea" target="_blank" class="btn btn-instagram" data-key="gallery_order">
+                                <i class="fab fa-instagram"></i> Porosisni nëpërmjet Instagram
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="special">
+                        <div class="gallery-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-heartbeat"></i>
+                                <span data-key="gallery_image12">Buqetë për shëndetësim</span>
+                            </div>
+                        </div>
+                        <div class="gallery-content">
+                            <h3 class="gallery-item-title" data-key="gallery_title12">Dëshira për shëndet</h3>
+                            <p class="gallery-item-desc" data-key="gallery_desc12">Një buqetë e butë dhe ngushëlluese për të dërguar dëshira shëndeti dhe shpejtë shërimi.</p>
+                            <a href="https://instagram.com/lulishtja.azalea" target="_blank" class="btn btn-instagram" data-key="gallery_order">
+                                <i class="fab fa-instagram"></i> Porosisni nëpërmjet Instagram
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-load-more">
+                    <button class="btn btn-secondary" id="loadMoreGallery" data-key="gallery_load_more">Shfaq më shumë produkte</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="community" class="community-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" data-key="community_title">Komuniteti ynë i Luleve</h2>
+                    <div class="section-divider"></div>
+                    <p class="section-subtitle" data-key="community_subtitle">Bashkohuni me dashamirët e tjerë të luleve në Pejë</p>
+                </div>
+                
+                <div class="community-content">
+                    <div class="community-text">
+                        <h3 data-key="community_heading">Pse të bashkohemi me komunitetin tonë?</h3>
+                        <p data-key="community_p1">Në Azalea Flowershop, ne besojmë se dashuria për lule është më e bukur kur ndahet me të tjerët. Komuniteti ynë i luleve është një hapësirë ku dashamirët e luleve në Pejë mund të ndajnë eksperiencat, të mësojnë nga njëri-tjetri dhe të gëzohen së bashku bukurinë e natyrës.</p>
+                        <p data-key="community_p2">Çdo muaj organizojmë takime virtuale dhe ndonjëherë edhe takime personale (kur lejojnë kushtet) ku diskutojmë tema të ndryshme rreth kujdesit të luleve, riprodhimit të bimëve dhe dekorimit të shtëpisë me lule.</p>
+                        
+                        <div class="community-features">
+                            <div class="feature-item">
+                                <i class="fas fa-users"></i>
+                                <div>
+                                    <h4 data-key="feature1_title">Ndarja e njohurive</h4>
+                                    <p data-key="feature1_desc">Mësoni këshilla dhe truke nga ekspertët tanë dhe nga anëtarët e tjerë të komunitetit.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-seedling"></i>
+                                <div>
+                                    <h4 data-key="feature2_title">Shkëmbim bimësh</h4>
+                                    <p data-key="feature2_desc">Merrni pjesë në aktivitetet tona të shkëmbimit të bimëve dhe zgjerojeni koleksionin tuaj.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-camera"></i>
+                                <div>
+                                    <h4 data-key="feature3_title">Konkurset e fotove</h4>
+                                    <p data-key="feature3_desc">Pjesëmarrni në konkurset tona mujore të fotove të luleve dhe fitoni çmime të bukura.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="community-action">
+                        <div class="action-card">
+                            <div class="action-icon">
+                                <i class="fab fa-instagram"></i>
+                            </div>
+                            <h3 data-key="action_instagram_title">Na ndiqni në Instagram</h3>
+                            <p data-key="action_instagram_desc">Bëhuni pjesë e komunitetit tonë virtual në Instagram ku postojmë përditësisht këshilla, fotot e produkteve tona të reja dhe organizojmë aktivitete të ndryshme.</p>
+                            <a href="https://instagram.com/lulishtja.azalea" target="_blank" class="btn btn-primary" data-key="action_follow">
+                                <i class="fab fa-instagram"></i> Ndiqni @lulishtja.azalea
+                            </a>
+                        </div>
+                        
+                        <div class="action-card">
+                            <div class="action-icon">
+                                <i class="fab fa-facebook"></i>
+                            </div>
+                            <h3 data-key="action_facebook_title">Grupi ynë në Facebook</h3>
+                            <p data-key="action_facebook_desc">Së shpejti do të hapim një grup privat në Facebook ekskluzivisht për dashamirët e luleve në Pejë. Regjistrohuni në newsletter për të marrë njoftim kur të hapet.</p>
+                            <button class="btn btn-secondary" id="joinCommunityBtn" data-key="action_join">Regjistrohuni për njoftim</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="newsletter" class="newsletter-section">
+            <div class="container">
+                <div class="newsletter-box">
+                    <div class="newsletter-content">
+                        <h2 class="newsletter-title" data-key="newsletter_title">Bashkohuni në Newsletter-in tonë</h2>
+                        <p class="newsletter-subtitle" data-key="newsletter_subtitle">Merrni këshilla mujore për kujdesin e luleve, zbritje ekskluzive dhe njoftime për eventet tona në email.</p>
+                        
+                        <form id="newsletterForm" class="newsletter-form">
+                            <div class="form-group">
+                                <input type="email" id="newsletterEmail" placeholder="Email juaj" required data-key="newsletter_placeholder">
+                                <button type="submit" class="btn btn-primary" data-key="newsletter_subscribe">Abonohu</button>
+                            </div>
+                            <div class="form-message" id="newsletterMessage"></div>
+                            <div class="form-agreement">
+                                <input type="checkbox" id="newsletterAgree" required>
+                                <label for="newsletterAgree" data-key="newsletter_agree">Pajtohem të marr email-e me këshilla për lule dhe njoftime për evente.</label>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="newsletter-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-envelope"></i>
+                            <span data-key="newsletter_image">Newsletter i luleve</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" data-key="contact_title">Na kontaktoni</h2>
+                    <div class="section-divider"></div>
+                    <p class="section-subtitle" data-key="contact_subtitle">Ne jemi këtu për t'ju ndihmuar me çdo pyetje që keni për lule</p>
+                </div>
+                
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3 data-key="contact_info_title">Informacioni i kontaktit</h3>
+                        
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 data-key="contact_location_title">Lokacioni ynë</h4>
+<p>Azalea Flowershop<br>Pejë, Kosovë</p>
+<p class="delivery-note" data-key="contact_delivery">Dorëzimi lokal në dispozicion vetëm në Pejë</p>
+<a href="https://maps.app.goo.gl/kB2KAqCyk9dMCtiU6" target="_blank" class="btn btn-primary btn-location">
+    <i class="fas fa-map-marked-alt"></i> Location
+</a>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div>
+                                    <h4 data-key="contact_phone_title">Telefononi</h4>
+                                    <p><a href="tel:+38349760577" class="phone-link">+383 49 760 577</a></p>
+                                    <p class="contact-note"><strong>24/7 në dispozicion për ju!</strong> Na telefononi për porosi ose pyetje.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4 data-key="contact_email_title">Email</h4>
+                                    <p><a href="mailto:lulishtja.azalea@gmail.com" class="email-link">lulishtja.azalea@gmail.com</a></p>
+                                    <p class="contact-note" data-key="contact_email_note">Ne përgjigjemi brenda 24 orëve të punës.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <h4 data-key="contact_hours_title">Orari i punës</h4>
+                                    <p><strong data-key="contact_hours_weekdays">Hënë-Shtunë:</strong> 9:00 - 19:00</p>
+                                    <p><strong data-key="contact_hours_sunday">E Dielë:</strong> Contact Us</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-social">
+                            <h4 data-key="contact_social_title">Na ndiqni në rrjetet sociale</h4>
+                            <div class="social-links">
+                                <a href="https://instagram.com/lulishtja.azalea" target="_blank" class="social-link instagram">
+                                    <i class="fab fa-instagram"></i>
+                                    <span>Instagram</span>
+                                </a>
+                                <a href="https://facebook.com/lulishtja.azalea" target="_blank" class="social-link facebook">
+                                    <i class="fab fa-facebook"></i>
+                                    <span>Facebook</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                   <div class="contact-form-container">
+    <h3 data-key="contact_form_title">Na dërgoni një mesazh</h3>
+    
+    <form id="contactForm" action="https://formspree.io/f/xpqpkkar" method="POST" class="contact-form">
+        <!-- Emri -->
+        <div class="form-group">
+            <label for="name" data-key="form_name">
+                <i class="fas fa-user"></i> Emri i plotë *
+            </label>
+            <input type="text" id="name" name="name" placeholder="Shkruani emrin tuaj të plotë" required>
+            <div class="error-message" id="nameError"></div>
+        </div>
+        
+        <!-- Email -->
+        <div class="form-group">
+            <label for="email" data-key="form_email">
+                <i class="fas fa-envelope"></i> Email *
+            </label>
+            <input type="email" id="email" name="email" placeholder="example@email.com" required>
+            <div class="error-message" id="emailError"></div>
+        </div>
+        
+        <!-- Telefoni -->
+        <div class="form-group">
+            <label for="phone" data-key="form_phone">
+                <i class="fas fa-phone"></i> Telefoni
+            </label>
+            <input type="tel" id="phone" name="phone" placeholder="+383 XX XXX XXX">
+            <div class="error-message" id="phoneError"></div>
+        </div>
+        
+        <!-- Subjekti -->
+        <div class="form-group">
+            <label for="subject" data-key="form_subject">
+                <i class="fas fa-tag"></i> Subjekti *
+            </label>
+            <input type="text" id="subject" name="subject" placeholder="Për çfarë bëhet fjalë?" required>
+            <div class="error-message" id="subjectError"></div>
+        </div>
+        
+        <!-- Mesazhi -->
+        <div class="form-group">
+            <label for="message" data-key="form_message">
+                <i class="fas fa-comment-dots"></i> Mesazhi *
+            </label>
+            <textarea id="message" name="message" rows="6" 
+                      placeholder="Shkruani mesazhin tuaj këtu..." required></textarea>
+            <div class="error-message" id="messageError"></div>
+        </div>
+        
+        <!-- Privacy checkbox -->
+        <div class="form-group checkbox-group">
+            <input type="checkbox" id="privacy" name="privacy" required>
+            <label for="privacy" class="checkbox-label">
+                Unë pranoj të dhënat e mia të përdoren për t'iu përgjigjur këtij mesazhi.
+                <span class="required-star">*</span>
+            </label>
+            <div class="error-message" id="privacyError"></div>
+        </div>
+        
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary submit-btn">
+            <i class="fas fa-paper-plane"></i> <span class="btn-text">Dërgo mesazhin</span>
+        </button>
+        
+        <!-- Status message -->
+        <div class="form-status" id="formStatus">
+            <div class="status-content">
+                <i class="fas fa-spinner fa-spin status-icon"></i>
+                <span class="status-text"></span>
+            </div>
+        </div>
+    </form>
+</div>
+                
+                <!-- Map Section -->
+                <div class="map-container" id="mapSection" style="display: none;">
+                    <div class="section-header">
+                        <h3 class="section-title">Lokacioni ynë në Pejë</h3>
+                        <div class="section-divider"></div>
+                    </div>
+                    <div id="map"></div>
+                    <div class="map-address">
+                        <p><i class="fas fa-map-marker-alt"></i> <strong>Adresa:</strong> Rruga e Luleve, Pejë, Kosovë</p>
+                        <p><i class="fas fa-clock"></i> <strong>Orari:</strong> Hënë-Shtunë: 9:00-19:00 | E Dielë: Na konaktoni</p>
+                        <button class="btn btn-secondary" id="closeMap">Mbyll hartën</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-logo">Azalea Flowershop</h3>
+                    <p class="footer-tagline" data-key="footer_tagline">Sjellim bukurinë e natyrës në shtëpitë e Pejës që nga viti 2019.</p>
+                    <div class="footer-social">
+                        <a href="https://instagram.com/lulishtja.azalea" target="_blank" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://facebook.com/lulishtja.azalea" target="_blank" aria-label="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-key="footer_links_title">Lidhje të shpejta</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home" data-key="nav_home">Kryefaqja</a></li>
+                        <li><a href="#about" data-key="nav_about">Rreth nesh</a></li>
+                        <li><a href="#flower-care" data-key="nav_care">Kujdesi i luleve</a></li>
+                        <li><a href="#blog" data-key="nav_blog">Blogu</a></li>
+                        <li><a href="#gallery" data-key="nav_gallery">Galeria</a></li>
+                        <li><a href="#community" data-key="nav_community">Komuniteti</a></li>
+                        <li><a href="#contact" data-key="nav_contact">Kontakti</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-key="footer_contact_title">Kontakti</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i> Pejë, Kosovë</li>
+                        <li><i class="fas fa-phone"></i> <a href="tel:+38349760577">+383 49 760 577</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:lulishtja.azalea@gmail.com">lulishtja.azalea@gmail.com</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-key="footer_newsletter_title">Newsletter</h4>
+                    <p data-key="footer_newsletter_desc">Abonohuni për të marrë këshilla mujore për kujdesin e luleve.</p>
+                    <form id="footerNewsletterForm" class="footer-newsletter">
+                        <input type="email" placeholder="Email juaj" required data-key="newsletter_placeholder">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; <span id="currentYear">2024</span> Azalea Flowershop. <span data-key="footer_rights">Të gjitha të drejtat e rezervuara.</span></p>
+                </div>
+                <div class="footer-credits">
+                    <p data-key="footer_created">Krijuar nga </p>
+                    <a href="https://instagram.com/amarsaliaga" target="_blank">amarsaliaga</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Blog Modal -->
+    <div class="modal-overlay" id="blogModalOverlay">
+        <div class="modal-container" id="blogModal">
+            <button class="modal-close" id="blogModalClose">&times;</button>
+            <div class="modal-content">
+                <div class="modal-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-leaf"></i>
+                        <span id="modalImageText">Imazhi i artikullit</span>
+                    </div>
+                </div>
+                <div class="modal-text">
+                    <h2 id="modalTitle">Titulli i artikullit</h2>
+                    <div class="modal-meta">
+                        <span class="modal-category" id="modalCategory">Kujdesi i Luleve</span>
+                        <span class="modal-date" id="modalDate">15 Maj 2019</span>
+                    </div>
+                    <div class="modal-body" id="modalBody">
+                        <p>Përmbajtja e plotë e artikullit do të shfaqet këtu.</p>
+                    </div>
+                    <div class="modal-share">
+                        <h4 data-key="modal_share">Ndajeni këtë artikull:</h4>
+                        <div class="share-buttons">
+                            <a href="#" class="share-btn facebook"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="share-btn instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="share-btn twitter"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="lule.js"></script>
+    <script>
+window.addEventListener("load", function () {
+    const hero = document.querySelector(".hero-section");
+    if (hero) {
+        hero.classList.add("loaded");
+        hero.classList.remove("loading");
+    }
+});
+
+
+// Toggle menu mobile
+    const hamburger = document.getElementById('hamburger');
+    const mainNav = document.getElementById('mainNav');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    hamburger.addEventListener('click', () => {
+        mainNav.classList.toggle('active');
+        hamburger.classList.toggle('active');
+        
+        // Krijo overlay nëse nuk ekziston
+        let overlay = document.querySelector('.nav-overlay');
+        if (!overlay) {
+            overlay = document.createElement('div');
+            overlay.className = 'nav-overlay';
+            document.body.appendChild(overlay);
+        }
+        
+        overlay.classList.toggle('active');
+        
+        // Mbylle menunë kur klikohet overlay
+        overlay.addEventListener('click', () => {
+            mainNav.classList.remove('active');
+            hamburger.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+    });
+    
+    // Mbylle menunë kur klikohet një link
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                mainNav.classList.remove('active');
+                hamburger.classList.remove('active');
+                
+                const overlay = document.querySelector('.nav-overlay');
+                if (overlay) {
+                    overlay.classList.remove('active');
+                }
+            }
+            
+            // Active state për link-et
+            navLinks.forEach(item => item.classList.remove('active'));
+            link.classList.add('active');
+        });
+    });
+    
+    // Logo click kthen në home
+    document.querySelector('.logo-link').addEventListener('click', (e) => {
+        e.preventDefault();
+        window.location.hash = '#home';
+        
+        // Scroll në fillim nëse je në home
+        if (window.location.hash === '#home') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Seto home si active
+        navLinks.forEach(item => item.classList.remove('active'));
+        document.querySelector('a[href="#home"]').classList.add('active');
+        
+        // Mbylle menunë mobile nëse është hapur
+        if (window.innerWidth <= 768) {
+            mainNav.classList.remove('active');
+            hamburger.classList.remove('active');
+            const overlay = document.querySelector('.nav-overlay');
+            if (overlay) overlay.classList.remove('active');
+        }
+    });
+    
+    // Rregullim për resize të window
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+            mainNav.classList.remove('active');
+            hamburger.classList.remove('active');
+            const overlay = document.querySelector('.nav-overlay');
+            if (overlay) overlay.classList.remove('active');
+        }
+    });
+</script>
+<style>
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+.logo-link {
+    position: relative;
+    overflow: hidden;
+}
+</style>
+<script src="https://formspree.io/js/formbutton-v1.min.js" defer></script>
+<script>
+  /* paste this line in verbatim */
+  window.formbutton=window.formbutton||function(){(formbutton.q=formbutton.q||[]).push(arguments)};
+  /* customize formbutton below*/     
+  formbutton("create", {
+    action: "https://formspree.io/f/xpqpkkar",
+    title: "How can we help?",
+    fields: [
+      { 
+        type: "email", 
+        label: "Email:", 
+        name: "email",
+        required: true,
+        placeholder: "your@email.com"
+      },
+      {
+        type: "textarea",
+        label: "Message:",
+        name: "message",
+        placeholder: "What's on your mind?",
+      },
+      { type: "submit" }      
+    ],
+    styles: {
+      title: {
+        backgroundColor: "gray"
+      },
+      button: {
+        backgroundColor: "gray"
+      }
+    }
+  });
+</script>
+<script src="lule-hamburger-line.js"></script>
+</body>
+</html>
